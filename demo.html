@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>formValidationJs > Demo</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+  </head>
+  <body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>formValidationJs > Demo</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <form class="formValidationJs">
+                    <div class="mb-3">
+                        <label for="fieldText" class="form-label">Field: TEXT</label>
+                        <input type="text" class="form-control" id="fieldText">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fieldTextCPF" class="form-label">Field: Number > CPF</label>
+                        <input type="text" class="form-control" id="fieldTextCPF">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fieldTextCNPJ" class="form-label">Field: Number > CNPJ</label>
+                        <input type="text" class="form-control" id="fieldTextCNPJ">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fieldSelect" class="form-label">Field: SELECT</label>
+                        <select class="form-select" id="fieldSelect">
+                            <option>Escolha</option>
+                            <option value='1'>Val: 1</option>
+                            <option value='2'>Val: 2</option>
+                            <option value='3'>Val: 3</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fieldPassword" class="form-label">Field: Password</label>
+                        <input type="password" class="form-control" id="fieldPassword">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fieldTextarea" class="form-label">Field: TEXTAREA</label>
+                        <textarea class="form-control" id="fieldTextarea" rows="3"></textarea>
+                      </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="fieldCheck">
+                        <label class="form-check-label" for="fieldCheck">Field: CHECK</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submeter formulário</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+      
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <!-- formValidationJs -->
+    <script src="formvalidation.js"></script>
+  </body>
+</html>
