@@ -1,0 +1,7 @@
+.formValidationJs .have-success {
+    border: 1px solid #1ba33d;
+}
+
+.formValidationJs .have-error {
+    border: 1px solid #e42424;
+}
