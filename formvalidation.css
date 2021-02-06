@@ -5,3 +5,8 @@
 .formValidationJs .have-error {
     border: 1px solid #e42424;
 }
+
+.formValidationJs .this-error {
+    color: #e42424;
+    font-size: 12px;
+}
