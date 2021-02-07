@@ -4,26 +4,15 @@
  * @ano 2020
  * @version 0.1
  * 
- * TODO: criar classe de validação com funções para cada tipo de campo, e incluir validação para radioField
- * TODO: necessita criar funções de validação de CPF, CNPJ entre outros, para validar direto com base nos data-attributes
- * TODO: criar div para reportar erro geral (alerta que existe erros)
- * ! js > local dos itens de insert html
- * ! <!-- beforebegin -->
- * !    <div id="mydiv">
- * !        <!-- afterbegin -->
- * !            <p>Existing content in #mydiv</p>
- * !        <!-- beforeend -->
- * !    </div>
- * !<!-- afterend -->
- * 
+ * TODO: necessita criar funções de validação de CPF, CNPJ, EMAIL, NUMEROS entre outros, para validar direto com base nos data-attributes
  */
 if(document.querySelectorAll('.formValidationJs')) {
-    let erro;
     let formValidationJs = document.querySelectorAll('.formValidationJs');
     formValidationJs.forEach((formToValidate) => {
         if(document.querySelector(`#${formToValidate.id} button[type="submit"]`)) {
             let submitloginForm = document.querySelector(`#${formToValidate.id} button[type="submit"]`);
             submitloginForm.addEventListener("click", () => {
+                let erro = false;
                 event.preventDefault();
                 console.log(`================ Formulário: ${formToValidate.id}`);
                 let types = ['input', 'select', 'textarea'];
@@ -32,7 +21,6 @@ if(document.querySelectorAll('.formValidationJs')) {
                         let anyFields = document.querySelectorAll(`#${formToValidate.id} ${type}`);
                         anyFields.forEach((field) => {
                             if(field.required) {
-                                console.log(`Campo: ${field.id} Type: ${field.type} Value: '${field.value}'`);
                                 field.classList.remove("have-success");
                                 field.classList.remove("have-error");
                                 if(document.querySelector(`[data-error-from="${field.id}"]`)) {
@@ -40,12 +28,26 @@ if(document.querySelectorAll('.formValidationJs')) {
                                 }
 
                                 if(field.type == 'checkbox') {
-
+                                    let allCheckbox = document.querySelectorAll(`input[name="${field.name}"]`);
+                                    let erroCheck = true;
+                                    allCheckbox.forEach((fieldCheckbox) => {
+                                        if(fieldCheckbox.checked == true) {
+                                            erroCheck = false;
+                                        }
+                                    });
+                                    if(erroCheck == true) {
+                                        erro = true;
+                                        field.classList.add("have-error");
+                                    }
                                 } else {
                                     if(field.value == "") {
-                                        field.classList.add("have-error");
-                                        displayMsg(field.id, field.getAttribute("data-error-message"));
+                                        let mensagem = field.getAttribute("data-error-message");
+                                        if(field.getAttribute("data-error-message") == null) {
+                                            mensagem = "Este campo nessecita ser preenchido.";
+                                        }
                                         erro = true;
+                                        field.classList.add("have-error");
+                                        document.querySelector(`#${field.id}`).insertAdjacentHTML("afterend", `<div class='this-error' data-error-from='${field.id}'>${mensagem}</div>`);
                                     } else {
                                         field.classList.add("have-success");
                                     }
@@ -54,14 +56,15 @@ if(document.querySelectorAll('.formValidationJs')) {
                         });
                     }
                 });
+
+                if(document.querySelector(`[data-error-from="${formToValidate.id}"]`)) {
+                    document.querySelector(`[data-error-from="${formToValidate.id}"]`).remove();
+                }
+                if(erro == true) {
+                    document.querySelector(`#${formToValidate.id}`).insertAdjacentHTML("beforebegin", `<div class='form-error' data-error-from='${formToValidate.id}'>Por favor, corrija os erros marcados de vermelho.</div>`);
+                }
+                console.log(`Status erro: ${erro}`);
             });
         }
     });
-}
-
-function displayMsg(idOrigem, mensagem) {
-    if(!mensagem) {
-        var mensagem = "Este campo nessecita ser preenchido.";
-    }
-    document.querySelector(`#${idOrigem}`).insertAdjacentHTML("afterend", `<div class='this-error' data-error-from='${idOrigem}'>${mensagem}</div>`);
 }
