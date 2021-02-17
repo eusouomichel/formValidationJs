@@ -1,7 +1,6 @@
 /**
  * Script formValidationJs
  * @author Michel Miléski
- * @ano 2020
  * @version 0.1
  * 
  * TODO: necessita criar funções de validação de CPF, CNPJ, EMAIL, NUMEROS entre outros, para validar direto com base nos data-attributes
@@ -62,6 +61,8 @@ if(document.querySelectorAll('.formValidationJs')) {
                 }
                 if(erro == true) {
                     document.querySelector(`#${formToValidate.id}`).insertAdjacentHTML("beforebegin", `<div class='form-error' data-error-from='${formToValidate.id}'>Por favor, corrija os erros marcados de vermelho.</div>`);
+                } else {
+                    document.querySelector(`#${formToValidate.id}`).submit();
                 }
                 console.log(`Status erro: ${erro}`);
             });
