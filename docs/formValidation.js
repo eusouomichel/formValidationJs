@@ -3,7 +3,7 @@
  * @param {NodeList} forms Forms to validate
  * @author Michel Miléski
  * @author Lucas Souza <lucasouliveira@gmail.com>
- * @version 1.1.0
+ * @version 2.0.0
  */
 export default function formValidate(forms) {
     forms.forEach(formToValidate => {
